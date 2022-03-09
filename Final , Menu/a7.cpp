@@ -3,8 +3,23 @@ using namespace std;
 
 class matrices{
 	int rows,coloumns;
-	int matrix[10][10];
+	int **matrix;
 public:
+	matrices(int r,int c){
+		rows = r;
+		coloumns = c;
+		matrix = new int *[rows];
+		for (int i = 0; i < rows; ++i) {
+			matrix[i]= new int [coloumns];
+		}
+	}
+	~matrices(){
+		for (int i = 0; i < rows; ++i) {
+			delete matrix[i];
+		}
+		delete matrix;
+		cout<<"Sucess";
+	}
 	matrices(){};
 	void get_matrix();
 	friend void matrix_add(matrices,matrices);
@@ -14,9 +29,6 @@ public:
 };
 
 void matrices::get_matrix(){
-	cout<<"Enter the No of Rows and Coloumns"<<endl;
-	cin>>rows>>coloumns;
-
 	for (int i = 0; i < rows; ++i) {
 		cout<<"Enter elements of "<<i+1<<" row"<<endl;
 		for (int j = 0; j < coloumns; ++j) {
@@ -87,53 +99,75 @@ void matrix_mult(matrices a,matrices b){
 			}
 		}
 	} else {
-		cout<<"For Matrix Multiplication , no of coloumns of first matrix should be equal to\n no of rows of second matrix";
+		cout<<"For Matrix Multiplication , no of coloumns of first matrix should be equal to no of rows of second matrix"<<endl;
 	}
 
 }
 
 void matrices::matrix_trace(){
 	if (rows !=coloumns){
-		cout<<"Trace is possible for square matrix";
+		cout<<"Trace is possible for square matrix"<<endl;
 	}
 	else{
 	int trace = 0;
 	for (int i = 0; i < rows; ++i) {
-			trace = trace + matrix[i][i];
-		}
+		trace = trace + matrix[i][i];
+	}
 	cout<<"The Trace of the Matrix is "<<trace;
 
 	}
 }
 int main() {
-	int choice;
-	matrices matrix1,matrix2;
-	cout<<"Main Menu"<<endl;
-	cout<<"Welcome , select the operation you want to perform"<<endl;
-	cout<<"1 for Addition of Matrix\n2 for Transpose of Matrix\n3 for Matrix Multiplication\n4 for Trace of Matrix"<<endl;
-	cin>>choice;
-	switch (choice) {
-		case 1:
-			matrix1.get_matrix();
-			matrix2.get_matrix();
-			matrix_add(matrix1, matrix2);
-			break;
-		case 2:
-			matrix1.get_matrix();
-			matrix1.matrix_transpose();
-			break;
-		case 3:
-			matrix1.get_matrix();
-			matrix2.get_matrix();
-			matrix_mult(matrix1, matrix2);
-			break;
-		case 4:
-			matrix1.get_matrix();
-			matrix1.matrix_trace();
-			break;
-		default:
-			cout<<"Invalid Choice";
-			break;
+	int choice,m,n,opt,exit_option;
+	cout<<"Enter the size of the First Matrix"<<endl;
+	cin>>m>>n;
+	matrices matrix1(m,n);
+	matrix1.get_matrix();
+	cout<<"Enter the size of the Second Matrix"<<endl;
+	cin>>m>>n;
+	matrices matrix2(m,n);
+	matrix2.get_matrix();
+	do {
+		cout<<"Main Menu"<<endl;
+		cout<<"Welcome , select the operation you want to perform"<<endl;
+		cout<<"1.Addition of Matrix\n2.Transpose of Matrix\n3.Matrix Multiplication\n4.Trace of Matrix"<<endl;
+		cin>>choice;
+		switch (choice) {
+			case 1:
+				matrix_add(matrix1, matrix2);
+				break;
+			case 2:
+				cout<<"Choose the option\n1.Transpose of First Matrix\n2.Transpose of Second Matrix"<<endl;
+				cin>>opt;
+				if(opt == 1){
+					matrix1.matrix_transpose();
+				}
+				else {
+					matrix2.matrix_transpose();
+				}
+				break;
+			case 3:
+				matrix_mult(matrix1, matrix2);
+				break;
+			case 4:
+				cout<<"Choose the option\n1.Trace of First Matrix\n2.Trace of Second Matrix"<<endl;
+				cin>>opt;
+				if(opt == 1){
+					matrix1.matrix_trace();
+				}
+				else {
+					matrix2.matrix_trace();
+				}
+				break;
+			default:
+				cout<<"Invalid Choice";
+				break;
+		}
+		cout<<"Do you want to continue?\n1.Continue\n2.Exit"<<endl;
+		cin>>exit_option;
+	} while (exit_option==1);
+	if (exit_option!=1){
+		cout<<"Succesfully Exited"<<endl;
 	}
 	return 0;
 }
