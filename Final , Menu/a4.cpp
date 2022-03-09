@@ -1,63 +1,76 @@
 #include <iostream>
+#include <cstring>
 using namespace std;
 
 class Strings{
-	string name;
-	int count;
+	char *name;
+	int length;
 public:
-	void getString();
+	Strings(){
+		length=0;
+		name = new char[length+1];
+	}
+	~Strings(){
+		delete name;
+	}
+	void getString(char *txt);
 	void compare(Strings,Strings);
 	void concatenate(Strings,Strings);
-	void length(Strings);
 	void displayLength();
 };
 
-void Strings::getString(){
-	cout<<"Enter Your String : ";
-	getline(cin,name);
+void Strings::getString(char *txt){
+	length = strlen(txt);
+	delete name;
+	name = new char[length+1];
+	strcpy(name, txt);
 }
+
 void Strings::concatenate(Strings string1,Strings string2){
-	name=string1.name+string2.name;
+	length = string1.length + string2.length;
+	delete name;
+	name = new char[length+1];
+	strcpy(name, string1.name);
+	strcat(name, string2.name);
 	cout<<name<<endl;
 }
 
 void Strings::compare(Strings string1,Strings string2){
-	if (string1.name == string2.name) {
+	if (string1.length == string2.length) {
 		cout<<"They are same strings"<<endl;
 	}
-	else {
-		cout<<"They are not same strings"<<endl;
+	else if (string1.length > string2.length) {
+		cout<<string1.name<<" is greater than "<<string2.name<<endl;
 	}
-}
-
-void Strings::length(Strings string){
-	count=0;
-	while(string.name[count]){
-		count++;
+	else {
+		cout<<string2.name<<" is greater than "<<string1.name<<endl;
 	}
 }
 
 void Strings::displayLength(){
-	cout<<"The String Length is "<<count<<endl;
+	cout<<"The String Length is "<<length<<endl;
 }
 
 int main() {
+	char name1[50],name2[50];
 	Strings string1,string2,result;
 	int choice,option;
-	string1.getString();
-	string2.getString();
+	cout<<"Enter your First String"<<endl;
+	cin>>name1;
+	cout<<"Enter your Second String"<<endl;
+	cin>>name2;
+	string1.getString(name1);
+	string2.getString(name2);
 	do
-	{	
+	{
 	cout<<"1.String Length\n2.Concatenate\n3.Compare"<<endl;
 	cin>>choice;
 	switch (choice)
 	{
 		case 1:
 			cout<<"First String"<<endl;
-			string1.length(string1);
 			string1.displayLength();
 			cout<<"Second String"<<endl;
-			string2.length(string2);
 			string2.displayLength();
 			break;
 		case 2:
@@ -73,7 +86,7 @@ int main() {
 	cout<<"Do you want to continue or quit\n1.Continue\n2.Quit"<<endl;
 	cin>>option;
 	} while (option == 1);
-	if(option == 2){
+	if(option != 1){
 		cout<<"Succesfully Quitted"<<endl;
 	}
 	return 0;
