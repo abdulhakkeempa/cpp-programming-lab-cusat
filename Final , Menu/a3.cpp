@@ -28,7 +28,7 @@ void bank::new_acc(){
 	cin>>acc_type;
 	cout<<"Enter the Amount you want to deposit (Minimum Balance is Rs.500)\n";
 	cin>>balance;
-	cout<<"Your Account Number is "<<acc_no<<endl;
+	cout<<"\nYour Account Number is "<<acc_no<<endl;
 	cout<<"Congratulations , Account Created Successfully\n";
 }
 
@@ -103,7 +103,7 @@ int main() {
 				cout<<"Error! , Try Again"<<endl;
 				break;
 			}
-			cout<<"Do you want to continue or quit.\nPress 1 to Continue\nPress 2 to Next Customer\nPress 3 to Quit the Application\n";
+			cout<<"\nDo you want to continue or quit.\nPress 1 to Continue\nPress 2 to Next Customer\nPress 3 to Quit the Application\n";
 			cin>>leave;
 			
 			if (leave==3) {

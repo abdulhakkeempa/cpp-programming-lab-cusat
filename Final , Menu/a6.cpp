@@ -33,7 +33,9 @@ void Time::sum(Time t1,Time t2){
 
 int main() {
 	Time T1,T2,T3;
+	cout<<"Time 1"<<endl;
 	T1.gettime();
+	cout<<"Time 2"<<endl;
 	T2.gettime();
 	T3.sum(T1, T2);
 	cout<<"Time 1 = ";
