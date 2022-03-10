@@ -7,11 +7,11 @@ class Time{
 	int seconds;
 public:
 	void gettime(){
-		cout<<"Enter the Hour";
+		cout<<"Enter the Hour\n";
 		cin>>hours;
-		cout<<"Enter the Minute";
+		cout<<"Enter the Minute\n";
 		cin>>minutes;
-		cout<<"Enter the Seconds";
+		cout<<"Enter the Seconds\n";
 		cin>>seconds;
 
 	}
@@ -36,13 +36,13 @@ int main() {
 	T1.gettime();
 	T2.gettime();
 	T3.sum(T1, T2);
-	cout<<"T1 = ";
+	cout<<"Time 1 = ";
 	T1.puttime();
 
-	cout<<"T2 = ";
+	cout<<"Time 2 = ";
 	T2.puttime();
 
-	cout<<"T3 = ";
+	cout<<"Result  = ";
 	T3.puttime();
 	return 0;
 }

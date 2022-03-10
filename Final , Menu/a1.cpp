@@ -1,4 +1,6 @@
 #include <iostream>
+#include <limits>
+using namespace std;
 
 class student{
 	std::string name;
@@ -13,8 +15,9 @@ class student{
 };
 
 void student::input(){
+	
 	std::cout<<"Enter the Student Name : ";
-	std::getline(std::cin,name);
+	std::cin>>name;
 	std::cout<<"Enter the Roll No : ";
 	std::cin>>roll_no;
 	std::cout<<"Enter the Marks for Subject 1 : ";
@@ -56,8 +59,13 @@ void student::display(){
 }
 
 int main() {
-	student Student1;
-	Student1.input();
-	Student1.display();
+	int choice = 1;
+	do{
+		student Student1;
+		Student1.input();
+		Student1.display();
+		std::cout<<"\nDo you want to continue \n1.Continue\n2.Quit"<<std::endl;
+		std::cin>>choice; 
+	} while(choice == 1);
 	return 0;
 }
