@@ -35,7 +35,7 @@ void area(int side1,int side2,int side3){
 int main() {
 	int choice,option;
 	do{
-		std::cout<<"1.Area of Rectangle\n2.Area of Circle\n3.Area of Trapezium\n4.Area of Triangle\n5.Area of Square\n";
+		std::cout<<"1.Area of Rectangle\n2.Area of Circle\n3.Area of Trapezium\n4.Area of Triangle\n5.Area of Square\n6.Quit"<<std::endl;
 		std::cin>>choice;
 		switch(choice){
 			case 1:
@@ -67,6 +67,8 @@ int main() {
 				std::cout<<"\n\nEnter the Side of the Square\n";
 				std::cin>>side;
 				area(side);
+				break;
+			case 6:
 				break;
 	}
 	std::cout<<"Do you want to continue?\n1.Continue\n2.Quit\n";
