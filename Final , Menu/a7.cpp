@@ -22,8 +22,8 @@ public:
 	}
 	matrices(){};
 	void get_matrix();
-	friend void matrix_add(matrices&,matrices&);
-	friend void matrix_mult(matrices&,matrices&);
+	friend void matrix_add(const matrices&,const matrices&);
+	friend void matrix_mult(const matrices&,const matrices&);
 	void matrix_transpose();
 	void matrix_trace();
 };
@@ -36,7 +36,7 @@ void matrices::get_matrix(){
 		}
 	}
 }
-void matrix_add(matrices &a,matrices &b){
+void matrix_add(const matrices &a,const matrices &b){
 	if(a.rows==b.rows and a.coloumns==b.coloumns){
 		int sum[a.rows][a.coloumns];
 		for (int i = 0; i < a.rows; ++i) {
@@ -76,7 +76,7 @@ void matrices::matrix_transpose(){
 
 }
 
-void matrix_mult(matrices &a,matrices &b){
+void matrix_mult(const matrices &a,const matrices &b){
 	if (a.coloumns==b.rows) {
 		int mult[a.rows][b.coloumns];
 		if(a.coloumns==b.rows){
@@ -135,7 +135,6 @@ int main() {
 		switch (choice) {
 			case 1:
 				matrix_add(matrix1, matrix2);
-				cout << "breaking...";
 				break;
 			case 2:
 				cout<<"Choose the option\n1.Transpose of First Matrix\n2.Transpose of Second Matrix"<<endl;
