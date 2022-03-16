@@ -12,30 +12,31 @@ public:
 	}
 	~Strings(){
 		delete name;
+		cout<<"Memmory Released"<<endl;
 	}
-	void getString(char *txt);
-	void compare(Strings,Strings);
-	void concatenate(Strings,Strings);
+	void getString(const char *txt);
+	void compare(const Strings&,const Strings&);
+	void concatenate(const Strings&,const Strings&);
 	void displayLength();
 };
 
-void Strings::getString(char *txt){
+void Strings::getString(const char *txt){
 	length = strlen(txt);
 	delete name;
 	name = new char[length+1];
 	strcpy(name, txt);
 }
 
-void Strings::concatenate(Strings string1,Strings string2){
+void Strings::concatenate(const Strings &string1,const Strings &string2){
 	length = string1.length + string2.length;
 	delete name;
 	name = new char[length+1];
 	strcpy(name, string1.name);
 	strcat(name, string2.name);
-	cout<<name<<endl;
+	cout<<"The Concatenated String is "<<name<<endl;
 }
 
-void Strings::compare(Strings string1,Strings string2){
+void Strings::compare(const Strings &string1,const Strings &string2){
 	if (string1.length == string2.length) {
 		cout<<"They are same strings"<<endl;
 	}

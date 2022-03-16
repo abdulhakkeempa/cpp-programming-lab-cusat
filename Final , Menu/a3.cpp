@@ -28,7 +28,7 @@ void bank::new_acc(){
 	cin>>acc_type;
 	cout<<"Enter the Amount you want to deposit (Minimum Balance is Rs.500)\n";
 	cin>>balance;
-	cout<<"Your Account Number is "<<acc_no<<endl;
+	cout<<"\nYour Account Number is "<<acc_no<<endl;
 	cout<<"Congratulations , Account Created Successfully\n";
 }
 
@@ -66,14 +66,19 @@ void bank::acc_statement(){
 }
 
 int main() {
-	int customer_number,choice;
-	cout<<"Enter No of Customers";
-	cin>>customer_number;
+	const int customer_number=20;
+	int choice;
+	bool Close = false;
 	bank* customer=new bank[customer_number];
 	int leave;
 
 	for (int i = 0; i < customer_number; ++i) {
-		leave = 1;
+		if(Close){
+			leave = 3;
+		}
+		else{
+			leave = 1;
+		}
 		while (leave == 1){
 		cout<<"\nCustomer "<<i+1<<endl;
 		cout<<"Main Menu\n1.Press 1 for New Account\n2.Press 2 to Withdraw\n3.Press 3 to Deposit\n4.Press 4 to check balance\n5.Press 5 for Account Statement\n";
@@ -98,8 +103,13 @@ int main() {
 				cout<<"Error! , Try Again"<<endl;
 				break;
 			}
-			cout<<"Do you want to continue or quit.\nPress 1 to Continue\nPress 2 to Quit\n";
+			cout<<"\nDo you want to continue or quit.\nPress 1 to Continue\nPress 2 to Next Customer\nPress 3 to Quit the Application\n";
 			cin>>leave;
+			
+			if (leave==3) {
+				Close = true;
+			}
+			
 		}
 	}
 	return 0;
