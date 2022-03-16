@@ -100,7 +100,7 @@ void Vector::operator>=(const Vector &A){
 
 int main() {
 	int option;
-	cout<<"Welcome\n1.Add Vector\n2.Quit"<<endl;
+	cout<<"Welcome\n1.Input Vectors\n2.Quit"<<endl;
 	cin>>option;
 
 	if (option==2) {
@@ -149,5 +149,8 @@ int main() {
 		cout<<"Do you want to Continue ?\n1.Continue\n2.Quit"<<endl;
 		cin>>choice2;
 	} while (choice2 == 1);
+	if(choice2!=1){
+		cout<<"Successfully Quitted!"<<endl;
+	}
 	return 0;
 }
