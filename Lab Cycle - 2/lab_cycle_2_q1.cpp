@@ -28,13 +28,27 @@ void Vector::getVector(){
 
 //member function to display the vector entered.
 void Vector::displayVector(){
-	cout<<i_Component<<"i + "<<j_Component<<"j + "<<k_Component<<"k"<<endl;
+	if (j_Component>=0 and k_Component>=0) {
+		cout<<i_Component<<"i + "<<j_Component<<"j + "<<k_Component<<"k"<<endl;
+	}
+	else {
+		if(j_Component<0 and k_Component<0){
+			cout<<i_Component<<"i "<<j_Component<<"j "<<k_Component<<"k"<<endl;
+		}
+		else if(j_Component<0){
+			cout<<i_Component<<"i "<<j_Component<<"j + "<<k_Component<<"k"<<endl;
+		}
+		else {
+			cout<<i_Component<<"i + "<<j_Component<<"j "<<k_Component<<"k"<<endl;
+		}
+	}
 }
 
 //member function to compute the magnitude of the vector
 void Vector::FindMagnitude(){
 	magnitude = (i_Component*i_Component)+(j_Component*j_Component)+(k_Component*k_Component);
 	magnitude = sqrtf(magnitude);
+	//cout<<"Magnitude is"<<magnitude<<endl;
 }
 
 //member function to overload == operator for vector
