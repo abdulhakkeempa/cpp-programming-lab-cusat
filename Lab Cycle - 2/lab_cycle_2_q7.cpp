@@ -28,7 +28,7 @@ protected:
 	int numBeta;
 public:
 	beta(){
-		cout<<"Default Constructor Base Class - of Beta"<<endl;
+		cout<<"Default Constructor Base Class - Beta"<<endl;
 	}
 	beta(int y){
 		numBeta = y;
