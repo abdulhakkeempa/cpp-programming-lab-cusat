@@ -67,10 +67,12 @@ int main() {
 		switch (choice) {
 			case 1:
 				Sum = complex1+complex2;
+				cout<<"Sum = ";
 				Sum.displayComplex();
 				break;
 			case 2:
 				Product = complex1*complex2;
+				cout<<"Product = ";
 				Product.displayComplex();
 				break;
 			default:
