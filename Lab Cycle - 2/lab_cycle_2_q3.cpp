@@ -9,40 +9,80 @@ class Vector{
 public:
 	void getVector();
 	void displayVector();
-	Vector operator*(const Vector &a);
-	void operator<<(const Vector &a);
-	void operator>>(const Vector &a);
+	void operator*(const Vector&);
+	friend ostream & operator<<(ostream&,Vector&);
+	friend istream & operator>>(istream&,Vector&);
 
 };
-//member function to get the components of the vector.
-void Vector::getVector(){
+
+//overloading >> operator to input the vector.
+istream & operator>>(istream&din,Vector&a){
 	cout<<"Enter the component of i"<<endl;
-	cin>>iComponent;
+	cin>>a.iComponent;
 	cout<<"Enter the component of j"<<endl;
-	cin>>jComponent;
+	cin>>a.jComponent;
 	cout<<"Enter the component of k"<<endl;
-	cin>>kComponent;
+	cin>>a.kComponent;
+	return (din);
 }
-//member function to display the vector entered.
-void Vector::displayVector(){
-	if (jComponent>=0 and kComponent>=0) {
-		cout<<iComponent<<"i + "<<jComponent<<"j + "<<kComponent<<"k"<<endl;
+
+//overloading << operator to input the vector.
+ostream & operator<<(ostream&dout,Vector&a){
+	if (a.jComponent>0 and a.kComponent>0) {
+		dout<<a.iComponent<<"i + "<<a.jComponent<<"j + "<<a.kComponent<<"k"<<endl;
 	}
 	else {
-		if(jComponent<0 and kComponent<0){
-			cout<<iComponent<<"i "<<jComponent<<"j "<<kComponent<<"k"<<endl;
+		if(a.jComponent<0 and a.kComponent<0){
+			dout<<a.iComponent<<"i "<<a.jComponent<<"j "<<a.kComponent<<"k"<<endl;
 		}
-		else if(jComponent<0){
-			cout<<iComponent<<"i "<<jComponent<<"j + "<<kComponent<<"k"<<endl;
+		else if(a.jComponent<0){
+			dout<<a.iComponent<<"i "<<a.jComponent<<"j + "<<a.kComponent<<"k"<<endl;
 		}
 		else {
-			cout<<iComponent<<"i + "<<jComponent<<"j "<<kComponent<<"k"<<endl;
+			dout<<a.iComponent<<"i + "<<a.jComponent<<"j "<<a.kComponent<<"k"<<endl;
 		}
 	}
+	return dout;
 }
 
+//overloading * operator to find the cross product.
+void Vector::operator*(const Vector&a){
+	Vector crossProduct;
+	crossProduct.iComponent = (jComponent*a.kComponent)-(kComponent*a.jComponent);
+	crossProduct.jComponent = (iComponent*a.kComponent)-(kComponent*a.iComponent);
+	crossProduct.kComponent = (iComponent*a.jComponent)-(jComponent*a.iComponent);
+	cout<<"Cross Product : "<<crossProduct;
+}
 
 int main() {
-
+	int exitOption,loopOption;
+	cout<<"Welcome \n1.Start\n2.Quit"<<endl;
+	cin>>exitOption;
+	if (exitOption==1) {
+		do {
+			cout<<"Vector - 1"<<endl;
+			Vector vector1;
+			cin>>vector1;
+			cout<<"Vector - 2"<<endl;
+			Vector vector2;
+			cin>>vector2;
+			cout<<"Vector 1 : "<<vector1;
+			cout<<"Vector 2 : "<<vector2;
+			int choice;
+			cout<<"1.Cross Product of Vector 1 and Vector 2\n2.Quit"<<endl;
+			cin>>choice;
+			if(choice==1){
+				vector1*vector2;
+				cout<<"Do you want to continue ?\n1.Continue\n2.Quit"<<endl;
+				cin>>loopOption;
+			}
+			else{
+				return 0;
+			}
+		} while (loopOption==1);
+	}
+	else {
+		return 0;
+	}
 	return 0;
 }
