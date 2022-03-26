@@ -136,7 +136,7 @@ int main() {
 	V2.FindMagnitude();
 
 	do {
-		cout<<"\nChoose the operation you want to perform on the vector \n1.==\n2.!=\n3.<\n4.<=\n5.>\n6.>=\n7.Quit"<<endl;
+		cout<<"\nChoose the operation you want to perform on the vector \n1.Vector1 == Vector2\n2.Vector1 != Vector2\n3.Vector1 <  Vector2\n4.Vector1 <= Vector2\n5.Vector1 >  Vector2\n6.Vector1 >= Vector2\n7.Quit"<<endl;
 		cin>>choice;
 		switch (choice) {
 			case 1:
