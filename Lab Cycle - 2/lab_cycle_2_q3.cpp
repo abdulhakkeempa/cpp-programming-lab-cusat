@@ -7,8 +7,6 @@ using namespace std;
 class Vector{
 	int iComponent,jComponent,kComponent;
 public:
-	void getVector();
-	void displayVector();
 	void operator*(const Vector&);
 	friend ostream & operator<<(ostream&,Vector&);
 	friend istream & operator>>(istream&,Vector&);
