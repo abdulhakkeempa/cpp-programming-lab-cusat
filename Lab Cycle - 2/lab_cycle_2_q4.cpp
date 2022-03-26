@@ -126,7 +126,7 @@ int main() {
 
 		do {
 			int option;
-			cout<<"\n1.Matrix 1 + Matrix 2\n2.Matrix 1 x Matrix2"<<endl;
+			cout<<"\n1.Matrix 1 + Matrix2\n2.Matrix 1 x Matrix2"<<endl;
 			cin>>option;
 			switch (option) {
 				case 1:
