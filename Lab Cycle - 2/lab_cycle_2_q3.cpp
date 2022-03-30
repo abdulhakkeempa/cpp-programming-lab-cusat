@@ -5,7 +5,7 @@ function. The following overloaded operators should work for a class vector.*/
 using namespace std;
 
 class Vector{
-	int iComponent,jComponent,kComponent;
+	float iComponent,jComponent,kComponent;
 public:
 	void operator*(const Vector&);
 	friend ostream & operator<<(ostream&,Vector&);
@@ -43,13 +43,11 @@ ostream & operator<<(ostream&dout,Vector&a){
 	return dout;
 }
 
-//overloading * operator to find the cross product.
+//overloading * operator to find the dot product.
 void Vector::operator*(const Vector&a){
-	Vector crossProduct;
-	crossProduct.iComponent = (jComponent*a.kComponent)-(kComponent*a.jComponent);
-	crossProduct.jComponent = (iComponent*a.kComponent)-(kComponent*a.iComponent);
-	crossProduct.kComponent = (iComponent*a.jComponent)-(jComponent*a.iComponent);
-	cout<<"Cross Product : "<<crossProduct;
+	float dotProduct;
+	dotProduct = (iComponent*a.iComponent)+(jComponent*a.jComponent)+(kComponent*a.kComponent);
+	cout<<"Dot Product : "<<dotProduct<<endl;
 }
 
 int main() {
@@ -67,7 +65,7 @@ int main() {
 			cout<<"Vector 1 : "<<vector1;
 			cout<<"Vector 2 : "<<vector2;
 			int choice;
-			cout<<"1.Cross Product of Vector 1 and Vector 2\n2.Quit"<<endl;
+			cout<<"1.Dot Product of Vector 1 and Vector 2\n2.Quit"<<endl;
 			cin>>choice;
 			if(choice==1){
 				vector1*vector2;
