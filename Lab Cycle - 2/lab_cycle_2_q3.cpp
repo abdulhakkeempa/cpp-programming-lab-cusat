@@ -7,7 +7,7 @@ using namespace std;
 class Vector{
 	float iComponent,jComponent,kComponent;
 public:
-	void operator*(const Vector&);
+	float operator*(const Vector&);
 	friend ostream & operator<<(ostream&,Vector&);
 	friend istream & operator>>(istream&,Vector&);
 
@@ -44,10 +44,10 @@ ostream & operator<<(ostream&dout,Vector&a){
 }
 
 //overloading * operator to find the dot product.
-void Vector::operator*(const Vector&a){
+float Vector::operator*(const Vector&a){
 	float dotProduct;
 	dotProduct = (iComponent*a.iComponent)+(jComponent*a.jComponent)+(kComponent*a.kComponent);
-	cout<<"Dot Product : "<<dotProduct<<endl;
+	return dotProduct;
 }
 
 int main() {
@@ -68,7 +68,9 @@ int main() {
 			cout<<"1.Dot Product of Vector 1 and Vector 2\n2.Quit"<<endl;
 			cin>>choice;
 			if(choice==1){
-				vector1*vector2;
+				float dotProduct;
+				dotProduct = vector1*vector2;
+				cout<<"Dot Product : "<<dotProduct<<endl;
 				cout<<"Do you want to continue ?\n1.Continue\n2.Quit"<<endl;
 				cin>>loopOption;
 			}
