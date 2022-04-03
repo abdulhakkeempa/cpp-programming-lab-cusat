@@ -118,6 +118,12 @@ void matrices::matrix_trace(){
 	}
 }
 int main() {
+	int Exit;
+	cout<<"1.Start\n2.Quit"<<endl;
+	cin>>Exit;
+	if (Exit==2) {
+		return 0;
+	}
 	int choice,m,n,opt,exit_option;
 	cout<<"Enter the size of the First Matrix"<<endl;
 	cin>>m>>n;
