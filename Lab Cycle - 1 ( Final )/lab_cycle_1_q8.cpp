@@ -31,21 +31,31 @@ void display(complex number){
 	}
 }
 int main() {
-	float num1,num2;
-	cout<<"Enter the the different real and image part\n";
-	cin>>num1>>num2;
-	complex A(num1,num2);
-	cout<<"A = ";
-	display(A);
-	float num3;
-	cout<<"Enter the same real and image part"<<endl;
-	cin>>num3;
-	complex B(num3);
-	cout<<"B = ";
-	display(B);
-	complex C;
-	C=sum(A,B);
-	cout<<"Sum = ";
-	display(C);
+	int exitOption,loopOption;
+	cout<<"1.Start\n2.Quit"<<endl;
+	cin>>exitOption;
+	if (exitOption==2) {
+		return 0;
+	}
+	do {
+		float num1,num2;
+		cout<<"Enter the different real and image part\n";
+		cin>>num1>>num2;
+		complex A(num1,num2);
+		cout<<"A = ";
+		display(A);
+		float num3;
+		cout<<"Enter the same real and image part"<<endl;
+		cin>>num3;
+		complex B(num3);
+		cout<<"B = ";
+		display(B);
+		complex C;
+		C=sum(A,B);
+		cout<<"Sum = ";
+		display(C);
+		cout<<"Do you want to continue ?\n1.Continue\n2.Quit"<<endl;
+		cin>>loopOption;
+	} while (loopOption==1);
 	return 0;
 }
