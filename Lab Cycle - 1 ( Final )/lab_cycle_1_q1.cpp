@@ -5,7 +5,7 @@ using namespace std;
 class student{
 	std::string name;
 	int roll_no;
-	float mark1,mark2,mark3,marks;
+	float mark1,mark2,mark3,totalMarks;
 	char grade;
 
 	public:
@@ -15,7 +15,6 @@ class student{
 };
 
 void student::input(){
-	
 	std::cout<<"Enter the Student Name : ";
 	std::cin>>name;
 	std::cout<<"Enter the Roll No : ";
@@ -29,22 +28,20 @@ void student::input(){
 }
 
 char student::calcGrade(float mark1,float mark2,float mark3){
-
-	marks = (mark1+mark2+mark3)/3;
-
-	if(marks>=90){
+	totalMarks = (mark1+mark2+mark3)/3;
+	if(totalMarks>=90){
 		grade='A';
 	}
-	else if(marks>=80 and marks<90){
+	else if(totalMarks>=80 and totalMarks<90){
 		grade='B';
 	}
-	else if(marks>=70 and marks<80){
+	else if(totalMarks>=70 and totalMarks<80){
 		grade='C';
 	}
-	else if(marks>=60 and marks<70){
+	else if(totalMarks>=60 and totalMarks<70){
 		grade='D';
 	}
-	else if(marks>=50 and marks<60){
+	else if(totalMarks>=50 and totalMarks<60){
 		grade='E';
 	}
 	else{
