@@ -56,7 +56,7 @@ void student::display(){
 }
 
 int main() {
-	int choice = 1;
+	int choice;
 	do{
 		student Student1;
 		Student1.input();
