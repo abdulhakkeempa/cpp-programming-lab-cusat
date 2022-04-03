@@ -86,7 +86,7 @@ int main() {
 	
 	do
 	{
-		cout<<"Welcome\n1.Add Data\n2.Display the total sum\n3.Remove an item\n4.Display List"<<endl;
+		cout<<"Welcome\n1.Add Data\n2.Display the total sum\n3.Remove an item\n4.Display List\n5.Quit"<<endl;
 		cin>>choice;
 		switch (choice)
 		{
@@ -101,6 +101,9 @@ int main() {
 				break;
 			case 4:
 				stock1.displaylist();
+				break;
+			case 5:
+				return 0;
 				break;
 			default:
 				cout<<"Invalid Choice"<<endl;
