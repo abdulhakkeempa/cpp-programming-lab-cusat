@@ -51,12 +51,18 @@ char student::calcGrade(float mark1,float mark2,float mark3){
 }
 
 void student::display(){
+	std::cout<<endl;
 	std::cout<<"Student : "<<name;
 	std::cout<<"\nThe Grade is "<<calcGrade(mark1,mark2,mark3)<<std::endl;
 }
 
 int main() {
-	int choice;
+	int exitOption,choice;
+	std::cout<<"1.Start\n2.Quit"<<endl;
+	std::cin>>exitOption;
+	if (exitOption==2) {
+		return 0;
+	}
 	do{
 		student Student1;
 		Student1.input();
