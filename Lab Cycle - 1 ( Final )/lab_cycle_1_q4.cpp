@@ -12,15 +12,14 @@ public:
 	}
 	~Strings(){
 		delete name;
-		cout<<"Memmory Released"<<endl;
 	}
-	void getString(const char *txt);
+	void getString(char *txt);
 	void compare(const Strings&,const Strings&);
 	void concatenate(const Strings&,const Strings&);
 	void displayLength();
 };
 
-void Strings::getString(const char *txt){
+void Strings::getString(char *txt){
 	length = strlen(txt);
 	delete name;
 	name = new char[length+1];
@@ -33,7 +32,7 @@ void Strings::concatenate(const Strings &string1,const Strings &string2){
 	name = new char[length+1];
 	strcpy(name, string1.name);
 	strcat(name, string2.name);
-	cout<<"The Concatenated String is "<<name<<endl;
+	cout<<name<<endl;
 }
 
 void Strings::compare(const Strings &string1,const Strings &string2){
@@ -55,7 +54,12 @@ void Strings::displayLength(){
 int main() {
 	char name1[50],name2[50];
 	Strings string1,string2,result;
-	int choice,option;
+	int choice,option,exitOption;
+	cout<<"1.Start\n2.Quit"<<endl;
+	cin>>exitOption;
+	if (exitOption==2) {
+		return 0;
+	}
 	cout<<"Enter your First String"<<endl;
 	cin>>name1;
 	cout<<"Enter your Second String"<<endl;
