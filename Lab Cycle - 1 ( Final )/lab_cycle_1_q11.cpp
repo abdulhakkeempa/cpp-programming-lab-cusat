@@ -38,6 +38,12 @@ void swap(class_1 &a,class_2 &b){
 }
 
 int main() {
+	int exitOption;
+	cout<<"1.Start\n2.Quit"<<endl;
+	cin>>exitOption;
+	if (exitOption==2) {
+		return 0;
+	}
 	class_1 obj1;
 	class_2 obj2;
 	obj1.get_value_firstClass();
