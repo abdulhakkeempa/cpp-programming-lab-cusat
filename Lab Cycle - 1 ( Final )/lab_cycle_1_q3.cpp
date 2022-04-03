@@ -70,7 +70,12 @@ int main() {
 	int choice;
 	bool Close = false;
 	bank* customer=new bank[customer_number];
-	int leave;
+	int leave,exitOption;
+	cout<<"1.Start\n2.Quit"<<endl;
+	cin>>exitOption;
+	if (exitOption==2) {
+		return 0;
+	}
 
 	for (int i = 0; i < customer_number; ++i) {
 		if(Close){
