@@ -15,7 +15,12 @@ public:
 int object::count;
 
 int main() {
-	int choice;
+	int choice,exitOption;
+	cout<<"1.Create Object\n2.Quit"<<endl;
+	cin>>exitOption;
+	if(exitOption==2){
+	        return 0;
+	}
 	do
 	{
 		object *a = new object;
