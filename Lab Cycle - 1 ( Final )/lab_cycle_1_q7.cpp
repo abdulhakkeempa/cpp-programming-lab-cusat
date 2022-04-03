@@ -113,7 +113,7 @@ void matrices::matrix_trace(){
 	for (int i = 0; i < rows; ++i) {
 		trace = trace + matrix[i][i];
 	}
-	cout<<"The Trace of the Matrix is "<<trace;
+	cout<<"The Trace of the Matrix is "<<trace<<endl;
 
 	}
 }
