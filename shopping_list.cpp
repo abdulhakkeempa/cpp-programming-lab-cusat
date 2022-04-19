@@ -37,13 +37,10 @@ public:
 		return itemQuantity;
 	}
 	void updateQuantity(int newQuantity){
-		itemQuantity = newQuantity;
+		itemQuantity = itemQuantity + newQuantity;
 	}
 	float generateSum(){
 		return itemQuantity*itemPrice;
-	}
-	string item_Name(){
-		return itemName;
 	}
 };
 
@@ -89,6 +86,8 @@ int main() {
 				break;
 			case 3:
 			{
+				bool found = false;
+				cout<<"Item Code\tItem Name\tItem Price\tItem Quantity"<<endl;
 				for (int i = 0; i < stockCount; ++i) {
 					stock[i].displayItem();
 				}
@@ -101,8 +100,12 @@ int main() {
 						cout<<"Enter the Amount of Quantity : ";
 						cin>>x;
 						stock[i].updateQuantity(x);
+						found = true;
 						break;
 					}
+				}
+				if(!found){
+					cout<<"Invalid Code"<<endl;
 				}
 			}
 				break;
@@ -139,10 +142,15 @@ int main() {
 				cout<<"Do you want to continue purchase"<<endl;
 				cout<<"1.Continue\n2.Generate Bill"<<endl;
 				cin>>choice;
+				float totalSum;
 				if(choice==2 and purchased==true){
+					cout<<"Your Purchase Bill"<<endl;
+					cout<<"Item Code\tItem Name\tItem Price\tItem Quantity"<<endl;
 					for (int i = 0; i < shoppingCount; ++i) {
-						cout<<shoppingList[i].item_Name()<<" : "<<shoppingList[i].generateSum()<<endl;
+						shoppingList[i].displayItem();
+						totalSum = totalSum + shoppingList[i].generateSum();
 					}
+					cout<<"Total Sum = "<<totalSum<<endl;
 				}
 				}
 			  while(choice==1);
