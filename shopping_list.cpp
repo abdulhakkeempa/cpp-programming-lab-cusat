@@ -42,6 +42,9 @@ public:
 	float generateSum(){
 		return itemQuantity*itemPrice;
 	}
+	void newQuantity(int newQuantity){
+		itemQuantity = newQuantity;
+	}
 };
 
 int main() {
@@ -70,6 +73,7 @@ int main() {
 					if (searchKey==stock[i].checkCode()) {
 						found = true;
 						keyPosition = i;
+						cout<<"Successfully Deleted"<<endl;
 						break;
 					}
 				}
@@ -101,6 +105,7 @@ int main() {
 						cin>>x;
 						stock[i].updateQuantity(x);
 						found = true;
+						cout<<"Successfully Updated"<<endl;
 						break;
 					}
 				}
@@ -130,9 +135,10 @@ int main() {
 							cout<<"Insufficient Stock"<<endl;
 							break;
 						}
+						cout<<"Came"<<endl;
 						purchased = true;
 						shoppingList[shoppingCount]=stock[i];
-						shoppingList[shoppingCount].updateQuantity(tempItemQuantity);
+						shoppingList[shoppingCount].newQuantity(tempItemQuantity);
 						stock[i].alterQuantity(tempItemQuantity);
 						shoppingList[shoppingCount].displayItem();
 						shoppingCount++;
